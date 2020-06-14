@@ -1,6 +1,6 @@
-package _145_binary_tree_postorder_traversal
+package binarytree
 
-//https://leetcode-cn.com/problems/binary-tree-postorder-traversal/
+//https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
 
 // Definition for a binary tree node.
 type TreeNode struct {
@@ -9,41 +9,39 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func postorderTraversal(root *TreeNode) []int {
-	return postorderIterative(root)
+func preorderTraversal(root *TreeNode) []int {
+	return preorderIterative(root)
 }
 
-func postorderRecursive(root *TreeNode) []int {
+func preorderRecursive(root *TreeNode) []int {
 	if root == nil {
 		return []int{}
 	}
-	rest := append(postorderRecursive(root.Left), postorderRecursive(root.Right)...)
-	rest = append(rest, root.Val)
+	rest := append([]int{root.Val}, preorderRecursive(root.Left)...)
+	rest = append(rest, preorderRecursive(root.Right)...)
 	return rest
 }
 
-func postorderIterative(root *TreeNode) []int {
+func preorderIterative(root *TreeNode) []int {
 	if root == nil {
 		return []int{}
 	}
-
 	stack, rest := Stack([]*TreeNode{root}), []int{}
 	for len(stack) > 0 {
 		cur := stack.Pop()
 		if cur != nil {
-			stack.Push(cur)
-			stack.Push(nil)
 			if cur.Right != nil {
 				stack.Push(cur.Right)
 			}
 			if cur.Left != nil {
 				stack.Push(cur.Left)
 			}
+			stack.Push(cur)
+			stack.Push(nil)
 		} else {
 			rest = append(rest, stack.Pop().Val)
 		}
 	}
-
 	return rest
 }
 

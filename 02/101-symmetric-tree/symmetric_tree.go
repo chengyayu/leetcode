@@ -1,4 +1,4 @@
-package _101_symmetric_tree
+package binarytree
 
 //https://leetcode-cn.com/problems/symmetric-tree/
 

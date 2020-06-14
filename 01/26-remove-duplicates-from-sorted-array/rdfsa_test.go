@@ -1,4 +1,4 @@
-package test_26
+package array
 
 import (
 	"fmt"

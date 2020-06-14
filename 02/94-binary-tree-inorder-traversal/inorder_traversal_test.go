@@ -1,11 +1,11 @@
-package _145_binary_tree_postorder_traversal
+package binarytree
 
 import (
 	"reflect"
 	"testing"
 )
 
-func Test_postorderTraversal(t *testing.T) {
+func Test_inorderTraversal(t *testing.T) {
 	type args struct {
 		root *TreeNode
 	}
@@ -20,13 +20,13 @@ func Test_postorderTraversal(t *testing.T) {
 				Left:  &TreeNode{Val: 2},
 				Right: &TreeNode{Val: 3},
 			}},
-			[]int{2, 3, 1},
+			[]int{2, 1, 3},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := postorderTraversal(tt.args.root); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("postorderTraversal() = %v, want %v", got, tt.want)
+			if got := inorderTraversal(tt.args.root); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("inorderTraversal() = %v, want %v", got, tt.want)
 			}
 		})
 	}

@@ -1,4 +1,4 @@
-package _94_binary_tree_inorder_traversal
+package binarytree
 
 //https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
 /**
